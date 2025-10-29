@@ -7,6 +7,7 @@ This template is your blank canvas. It comes with a minimal setup to help you ge
 - A clean, minimal Spark environment
 - Pre-configured for local development
 - Ready to scale with your ideas
+- Custom domain setup for GitHub Pages (see [CUSTOM_DOMAIN_SETUP.md](./CUSTOM_DOMAIN_SETUP.md))
   
 🧠 What Can You Do?
 
