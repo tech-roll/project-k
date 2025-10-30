@@ -17,7 +17,7 @@ import {
   Sun
 } from "@phosphor-icons/react"
 import { useTheme } from "@/hooks/use-theme"
-import logo from "@/assets/images/logo.jpeg"
+import logo from "@/assets/images/logo.png"
 
 interface ServicesViewProps {
   onBack: () => void

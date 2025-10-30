@@ -12,7 +12,7 @@ import { BlogView } from "@/components/BlogView"
 import { ServicesView } from "@/components/ServicesView"
 import { ParticleBackground } from "@/components/ParticleBackground"
 import { useTheme } from "@/hooks/use-theme"
-import logo from '@/assets/images/logo.jpeg'
+import logo from '@/assets/images/logo.png'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
