@@ -384,7 +384,7 @@ function App() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground">sales@dhinoix.com</p>
+                      <p className="text-muted-foreground">sales@example.com</p>
                     </div>
                   </div>
                   
