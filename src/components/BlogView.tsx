@@ -8,7 +8,7 @@ import { BlogCard } from "./BlogCard"
 import { ArrowLeft, MagnifyingGlass, Clock, User, CalendarBlank, ShareNetwork, Moon, Sun } from "@phosphor-icons/react"
 import { toast } from "sonner"
 import { useTheme } from "@/hooks/use-theme"
-import logo from "@/assets/images/logo.jpeg"
+import logo from "@/assets/images/logo.png"
 
 interface BlogPost {
   id: string
