@@ -349,9 +349,9 @@ function App() {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Address</h3>
                       <p className="text-muted-foreground">
-                        123 Innovation Drive<br />
-                        Tech City, TC 12345<br />
-                        United States
+                        tech-roll/project-k#1, 11th cross, 8th road,<br />
+                        Govinayakanahalli 2nd stage,<br />
+                        Kumaraswamy Layout, Bangalore-560078
                       </p>
                     </div>
                   </div>
@@ -364,7 +364,7 @@ function App() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                      <p className="text-muted-foreground">+91 9741366703</p>
                     </div>
                   </div>
                 </div>
@@ -384,7 +384,7 @@ function App() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground">sales@example.com</p>
+                      <p className="text-muted-foreground">sales@dhionix.com</p>
                     </div>
                   </div>
                   
@@ -396,8 +396,7 @@ function App() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Mobile</h3>
-                      <p className="text-muted-foreground">+1 (555) 987-6543</p>
-                      <p className="text-muted-foreground">+1 (555) 456-7890</p>
+                      <p className="text-muted-foreground">+91 9741366703</p>
                     </div>
                   </div>
                 </div>
