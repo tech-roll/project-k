@@ -72,9 +72,9 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-[100] bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border-b border-border/40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 flex items-center gap-3">
-              <img src={logo} alt="logo" className="h-10 w-10" />
-              <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">Dhinoix</h1>
+            <div className="flex-shrink-0 flex items-center gap-3 whitespace-nowrap">
+              <img src={logo} alt="logo" className="h-10 w-10 flex-shrink-0" />
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent flex-shrink-0">Dhinoix</h1>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
@@ -528,9 +528,9 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <img src={logo} alt="logo" className="h-8 w-8" />
-                <h3 className="text-xl font-bold text-background">Dhinoix IT Solutions</h3>
+              <div className="flex items-center gap-3 mb-4 whitespace-nowrap">
+                <img src={logo} alt="logo" className="h-8 w-8 flex-shrink-0" />
+                <h3 className="text-xl font-bold text-background flex-shrink-0">Dhinoix IT Solutions</h3>
               </div>
               <p className="text-background/80 mb-4">
                 Building exceptional software solutions that drive business growth and innovation.
