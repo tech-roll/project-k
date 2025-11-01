@@ -340,14 +340,14 @@ export function ServicesView({ onBack }: ServicesViewProps) {
       <nav className="fixed top-0 left-0 right-0 z-[100] bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border-b border-border/40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-4">
-              <img src={logo} alt="Dhinoix Logo" className="h-10 w-10" />
+            <div className="flex items-center gap-4 whitespace-nowrap">
+              <img src={logo} alt="Dhinoix Logo" className="h-10 w-10 flex-shrink-0" />
               <Button variant="ghost" onClick={onBack} className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Home
               </Button>
             </div>
-            <h1 className="text-xl font-bold text-primary">Services</h1>
+            <h1 className="text-xl font-bold text-primary whitespace-nowrap flex-shrink-0">Services</h1>
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
