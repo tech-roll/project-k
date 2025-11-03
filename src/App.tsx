@@ -134,19 +134,6 @@ function App() {
                 View Services
               </Button>
             </div>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50">
-                <CheckCircle className="w-4 h-4 text-accent" weight="fill" />
-                <span>50+ Projects Delivered</span>
-              </div>
-              <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50">
-                <CheckCircle className="w-4 h-4 text-accent" weight="fill" />
-                <span>99% Client Satisfaction</span>
-              </div>
-              <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50">
-                <CheckCircle className="w-4 h-4 text-accent" weight="fill" />
-                <span>24/7 Support</span>
-              </div>
             </div>
           </div>
         </div>
