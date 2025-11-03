@@ -341,7 +341,7 @@ export function ServicesView({ onBack }: ServicesViewProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-4 whitespace-nowrap">
-              <img src={logo} alt="Dhinoix Logo" className="h-10 w-10 flex-shrink-0" />
+              <img src={logo} alt="Dhionix Logo" className="h-10 w-10 flex-shrink-0" />
               <Button variant="ghost" onClick={onBack} className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Home
@@ -664,7 +664,7 @@ export function ServicesView({ onBack }: ServicesViewProps) {
 
       <footer className="bg-foreground text-background py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-background/80">© 2024 Dhinoix IT Solutions. All rights reserved.</p>
+          <p className="text-background/80">© 2024 Dhionix IT Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>
