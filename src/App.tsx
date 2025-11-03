@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket } from "@phosphor-icons/react"
+import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket, Cloud, GitBranch, Database, Shield } from "@phosphor-icons/react"
 import { useState } from "react"
 import { toast } from "sonner"
 import emailjs from '@emailjs/browser'
@@ -82,15 +82,27 @@ function App() {
       features: ["Web Applications", "Mobile Apps", "Enterprise Solutions", "API Development"]
     },
     {
+      icon: Cloud,
+      title: "Azure Cloud Services",
+      description: "Harness Microsoft Azure's powerful cloud platform to build, deploy, and scale applications with enterprise-grade security and reliability.",
+      features: ["Scalable Infrastructure", "Azure App Services", "Database Solutions", "Identity & Access Management"]
+    },
+    {
+      icon: GitBranch,
+      title: "Azure DevOps Services",
+      description: "Streamline your development lifecycle with Azure DevOps tools for continuous integration, deployment, and project management.",
+      features: ["CI/CD Pipelines", "Azure Repos", "Project Tracking", "Automated Testing"]
+    },
+    {
       icon: CloudArrowUp,
-      title: "Cloud & DevOps Solutions", 
-      description: "Scalable cloud infrastructure and automated deployment pipelines for reliable, efficient operations.",
-      features: ["AWS/Azure Migration", "CI/CD Pipelines", "Container Orchestration", "Monitoring & Security"]
+      title: "Cloud Migration & Modernization", 
+      description: "Seamlessly migrate your existing infrastructure to the cloud and modernize legacy applications for optimal performance.",
+      features: ["AWS/Azure Migration", "Container Orchestration", "Monitoring & Security", "Performance Optimization"]
     },
     {
       icon: Rocket,
       title: "Digital Transformation",
-      description: "Strategic technology consulting to modernize your business processes and drive growth.",
+      description: "Strategic technology consulting to modernize your business processes and drive growth through innovative solutions.",
       features: ["Process Automation", "Data Analytics", "System Integration", "Technology Strategy"]
     }
   ]
@@ -194,7 +206,7 @@ function App() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card 
                 key={index} 
