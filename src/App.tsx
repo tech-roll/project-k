@@ -177,7 +177,6 @@ function App() {
                 View Services
               </Button>
             </div>
-            </div>
           </div>
         </div>
       </section>
