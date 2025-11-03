@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket, Cloud, GitBranch, Database, Shield } from "@phosphor-icons/react"
+import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket, Cloud, GitBranch, Database, Shield, GithubLogo, HardDrives, ArrowsCounterClockwise, Users, Lock } from "@phosphor-icons/react"
 import { useState } from "react"
 import { toast } from "sonner"
 import emailjs from '@emailjs/browser'
@@ -79,31 +79,65 @@ function App() {
       icon: Terminal,
       title: "Custom Software Development",
       description: "Tailored applications built with cutting-edge technologies to solve your unique business challenges.",
-      features: ["Web Applications", "Mobile Apps", "Enterprise Solutions", "API Development"]
+      features: ["Web Applications", "Mobile Apps", "Enterprise Solutions", "API Development"],
+      benefits: "Accelerated time-to-market with scalable, maintainable code architecture.",
+      scenarios: "E-commerce platforms, SaaS applications, mobile-first solutions"
+    },
+    {
+      icon: Cloud,
+      title: "GitHub Cloud Services",
+      description: "Leverage GitHub's cloud-native platform for seamless collaboration, automatic updates, and enterprise-grade security compliance.",
+      features: ["Remote Team Collaboration", "Automatic Security Updates", "Scalable Infrastructure", "Advanced Security & Compliance"],
+      benefits: "Enhanced productivity for distributed teams with 99.9% uptime and built-in security scanning.",
+      scenarios: "Remote development teams, open-source projects, cloud-native organizations scaling rapidly"
+    },
+    {
+      icon: HardDrives,
+      title: "GitHub Enterprise Server",
+      description: "Deploy GitHub on-premises with complete data residency control, custom compliance requirements, and seamless internal IT integration.",
+      features: ["Data Residency Control", "Custom Compliance Standards", "Internal IT Integration", "Advanced Access Controls"],
+      benefits: "Meet strict regulatory requirements while maintaining GitHub's powerful collaboration features.",
+      scenarios: "Financial institutions, healthcare organizations, government agencies with strict data governance"
+    },
+    {
+      icon: ArrowsCounterClockwise,
+      title: "Migration & CI/CD Implementation",
+      description: "Comprehensive migration support for source code, issues, and workflows with seamless CI/CD pipeline integration and validation.",
+      features: ["Complete Migration Support", "CI/CD Pipeline Planning", "GitHub Actions Integration", "Post-Migration Validation"],
+      benefits: "Zero-downtime migrations with preserved history and optimized workflow automation.",
+      scenarios: "Legacy system modernization, multi-platform consolidation, workflow standardization"
     },
     {
       icon: Cloud,
       title: "Azure Cloud Services",
       description: "Harness Microsoft Azure's powerful cloud platform to build, deploy, and scale applications with enterprise-grade security and reliability.",
-      features: ["Scalable Infrastructure", "Azure App Services", "Database Solutions", "Identity & Access Management"]
+      features: ["Scalable Infrastructure", "Azure App Services", "Database Solutions", "Identity & Access Management"],
+      benefits: "Reduced operational costs with automatic scaling and comprehensive monitoring.",
+      scenarios: "Enterprise applications, data-intensive workloads, global application deployment"
     },
     {
       icon: GitBranch,
       title: "Azure DevOps Services",
       description: "Streamline your development lifecycle with Azure DevOps tools for continuous integration, deployment, and project management.",
-      features: ["CI/CD Pipelines", "Azure Repos", "Project Tracking", "Automated Testing"]
+      features: ["CI/CD Pipelines", "Azure Repos", "Project Tracking", "Automated Testing"],
+      benefits: "Faster delivery cycles with integrated toolchain and comprehensive project visibility.",
+      scenarios: "Agile development teams, complex multi-service applications, regulated development environments"
     },
     {
       icon: CloudArrowUp,
       title: "Cloud Migration & Modernization", 
       description: "Seamlessly migrate your existing infrastructure to the cloud and modernize legacy applications for optimal performance.",
-      features: ["AWS/Azure Migration", "Container Orchestration", "Monitoring & Security", "Performance Optimization"]
+      features: ["AWS/Azure Migration", "Container Orchestration", "Monitoring & Security", "Performance Optimization"],
+      benefits: "Improved scalability and reduced maintenance overhead with modern cloud architecture.",
+      scenarios: "Legacy application modernization, data center consolidation, microservices transformation"
     },
     {
       icon: Rocket,
       title: "Digital Transformation",
       description: "Strategic technology consulting to modernize your business processes and drive growth through innovative solutions.",
-      features: ["Process Automation", "Data Analytics", "System Integration", "Technology Strategy"]
+      features: ["Process Automation", "Data Analytics", "System Integration", "Technology Strategy"],
+      benefits: "Streamlined operations with data-driven insights and automated workflow optimization.",
+      scenarios: "Business process reengineering, digital-first initiatives, competitive advantage through technology"
     }
   ]
 
@@ -200,13 +234,13 @@ function App() {
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Our Services
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From concept to deployment, we provide end-to-end software development services 
-              tailored to your business needs.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              From concept to deployment, we provide comprehensive software development and GitHub services 
+              tailored to your business needs. Specializing in cloud platforms, migration, and modern DevOps practices.
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <Card 
                 key={index} 
@@ -220,15 +254,32 @@ function App() {
                   <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>
-                <CardContent className="relative z-10">
-                  <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" weight="fill" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <CardContent className="relative z-10 space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-sm text-foreground mb-2">Key Features</h4>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center gap-2 text-sm">
+                          <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" weight="fill" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {service.benefits && (
+                    <div>
+                      <h4 className="font-semibold text-sm text-foreground mb-2">Benefits</h4>
+                      <p className="text-sm text-muted-foreground">{service.benefits}</p>
+                    </div>
+                  )}
+                  
+                  {service.scenarios && (
+                    <div>
+                      <h4 className="font-semibold text-sm text-foreground mb-2">Use Cases</h4>
+                      <p className="text-sm text-muted-foreground">{service.scenarios}</p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}
