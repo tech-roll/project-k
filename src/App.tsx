@@ -8,6 +8,8 @@ import { Separator } from "@/components/ui/separator"
 import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket } from "@phosphor-icons/react"
 import { useState } from "react"
 import { toast } from "sonner"
+import emailjs from '@emailjs/browser'
+import { emailConfig } from "@/config/email"
 import { BlogView } from "@/components/BlogView"
 import { ServicesView } from "@/components/ServicesView"
 import { ParticleBackground } from "@/components/ParticleBackground"
@@ -24,11 +26,52 @@ function App() {
   })
   const [showBlog, setShowBlog] = useState(false)
   const [showServices, setShowServices] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    toast.success("Thank you for your inquiry! We'll get back to you within 24 hours.")
-    setFormData({ name: '', email: '', company: '', message: '' })
+    setIsSubmitting(true)
+    
+    // Show loading toast
+    const loadingToast = toast.loading("Sending your message...")
+    
+    try {
+      // EmailJS configuration from config file
+      const { serviceId, templateId, publicKey } = emailConfig
+      
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        to_email: 'sales@dhionix.com',
+        reply_to: formData.email,
+      }
+      
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      // Success
+      toast.dismiss(loadingToast)
+      toast.success("Thank you for your inquiry! We'll get back to you within 24 hours.")
+      setFormData({ name: '', email: '', company: '', message: '' })
+      
+    } catch (error) {
+      console.error('Failed to send email:', error)
+      toast.dismiss(loadingToast)
+      
+      // Fallback: Open email client with pre-filled information
+      const emailSubject = `New Project Inquiry from ${formData.name}`
+      const emailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ACompany: ${formData.company}%0D%0A%0D%0AProject Details:%0D%0A${formData.message}`
+      const mailtoLink = `mailto:sales@dhionix.com?subject=${emailSubject}&body=${emailBody}`
+      
+      window.open(mailtoLink, '_blank')
+      toast.success("Opening your email client to send the message.")
+      setFormData({ name: '', email: '', company: '', message: '' })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const services = [
@@ -468,8 +511,12 @@ function App() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
