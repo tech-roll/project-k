@@ -60,7 +60,7 @@ Externalize configuration and sensitive data from your application code.
 
 ## Real-World Implementation
 
-At Dhinoix IT Solutions, we've helped numerous clients migrate monolithic applications to microservices. One recent project reduced deployment time from hours to minutes while improving system reliability by 300%.
+At Dhionix IT Solutions, we've helped numerous clients migrate monolithic applications to microservices. One recent project reduced deployment time from hours to minutes while improving system reliability by 300%.
 
 The key is starting small - identify bounded contexts in your application and extract them one at a time. Don't try to rebuild everything at once.
 
@@ -119,7 +119,7 @@ While AI is powerful, it's not without challenges:
 
 The future of AI in software development is bright. We're moving toward a world where developers work alongside AI assistants that understand context, business requirements, and best practices.
 
-At Dhinoix IT Solutions, we're already integrating AI tools into our development process, resulting in 40% faster delivery times while maintaining our high quality standards.`,
+At Dhionix IT Solutions, we're already integrating AI tools into our development process, resulting in 40% faster delivery times while maintaining our high quality standards.`,
     category: "AI & Machine Learning",
     author: "Jordan Kim",
     date: "Mar 12, 2024",
@@ -456,7 +456,7 @@ export function BlogView({ onBack }: BlogViewProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center gap-4 whitespace-nowrap">
-                <img src={logo} alt="Dhinoix Logo" className="h-10 w-10 flex-shrink-0" />
+                <img src={logo} alt="Dhionix Logo" className="h-10 w-10 flex-shrink-0" />
                 <Button variant="ghost" onClick={() => setSelectedPost(null)}>
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Blog
@@ -582,7 +582,7 @@ export function BlogView({ onBack }: BlogViewProps) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">{selectedPost.author}</h3>
-                  <p className="text-sm text-muted-foreground">Senior Software Engineer at Dhinoix IT Solutions</p>
+                  <p className="text-sm text-muted-foreground">Senior Software Engineer at Dhionix IT Solutions</p>
                 </div>
               </div>
             </CardContent>
@@ -598,13 +598,13 @@ export function BlogView({ onBack }: BlogViewProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-4 whitespace-nowrap">
-              <img src={logo} alt="Dhinoix Logo" className="h-10 w-10 flex-shrink-0" />
+              <img src={logo} alt="Dhionix Logo" className="h-10 w-10 flex-shrink-0" />
               <Button variant="ghost" onClick={onBack}>
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Home
               </Button>
             </div>
-            <h1 className="text-xl font-bold text-primary whitespace-nowrap flex-shrink-0">Dhinoix Blog</h1>
+            <h1 className="text-xl font-bold text-primary whitespace-nowrap flex-shrink-0">Dhionix Blog</h1>
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"

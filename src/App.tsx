@@ -74,7 +74,7 @@ function App() {
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center gap-3 whitespace-nowrap">
               <img src={logo} alt="logo" className="h-10 w-10 flex-shrink-0" />
-              <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent flex-shrink-0">Dhinoix</h1>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent flex-shrink-0">Dhionix</h1>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
@@ -204,10 +204,10 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              About Dhinoix IT Solutions
+              About Dhionix IT Solutions
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Founded by seasoned software engineers, Dhinoix IT Solutions brings together 
+              Founded by seasoned software engineers, Dhionix IT Solutions brings together 
               deep technical expertise and business acumen to deliver software that makes a difference.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
@@ -337,7 +337,7 @@ function App() {
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <Card className="backdrop-blur-sm bg-card/80 border-border/40 hover:border-primary/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary/10">
               <CardHeader>
-                <CardTitle className="text-2xl">Dhinoix IT Solutions</CardTitle>
+                <CardTitle className="text-2xl">Dhionix IT Solutions</CardTitle>
                 <CardDescription>Complete Contact Information</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -530,7 +530,7 @@ function App() {
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4 whitespace-nowrap">
                 <img src={logo} alt="logo" className="h-8 w-8 flex-shrink-0" />
-                <h3 className="text-xl font-bold text-background flex-shrink-0">Dhinoix IT Solutions</h3>
+                <h3 className="text-xl font-bold text-background flex-shrink-0">Dhionix IT Solutions</h3>
               </div>
               <p className="text-background/80 mb-4">
                 Building exceptional software solutions that drive business growth and innovation.
@@ -557,7 +557,7 @@ function App() {
           </div>
           <Separator className="my-8 bg-background/20" />
           <div className="text-center text-background/60">
-            <p>&copy; 2024 Dhinoix IT Solutions. All rights reserved.</p>
+            <p>&copy; 2024 Dhionix IT Solutions. All rights reserved.</p>
           </div>
         </div>
       </footer>
