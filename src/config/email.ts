@@ -1,24 +1,46 @@
 // EmailJS Configuration
-// To set up EmailJS:
-// 1. Go to https://www.emailjs.com/
-// 2. Create a free account
-// 3. Create a new service (Gmail, Outlook, etc.)
-// 4. Create an email template
-// 5. Get your public key from Account settings
-// 6. Update the values below
+// IMPORTANT: To receive emails, you MUST set up EmailJS:
+// 1. Go to https://www.emailjs.com/ and create a FREE account
+// 2. Add a new service (Gmail recommended):
+//    - Choose Gmail
+//    - Connect your sales@dhionix.com Gmail account
+//    - Note the Service ID (e.g., 'service_xyz123')
+// 3. Create an email template:
+//    - Template Name: 'Dhionix Contact Form'
+//    - Subject: 'New Project Inquiry from {{from_name}}'
+//    - Content: Use the template below
+//    - Note the Template ID (e.g., 'template_abc123')
+// 4. Get your Public Key from Account > API Keys
+// 5. Replace the values below with your actual IDs
 
 export const emailConfig = {
-  serviceId: 'service_dhionix', // Replace with your EmailJS service ID
-  templateId: 'template_contact', // Replace with your EmailJS template ID
-  publicKey: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
+  // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS:
+  serviceId: 'service_dhionix_001', // Your EmailJS service ID from step 2
+  templateId: 'template_dhionix_contact', // Your EmailJS template ID from step 3
+  publicKey: 'YOUR_EMAILJS_PUBLIC_KEY_HERE', // Your EmailJS public key from step 4
   
-  // Email template should include these variables:
-  // {{from_name}} - Customer's name
-  // {{from_email}} - Customer's email
-  // {{company}} - Customer's company
-  // {{message}} - Customer's message
-  // {{to_email}} - Your email (sales@dhionix.com)
-  // {{reply_to}} - Customer's email for replies
+  // EMAIL TEMPLATE FOR EMAILJS (Copy this to your EmailJS template):
+  // Subject: New Project Inquiry from {{from_name}}
+  //
+  // Hello Dhionix Team,
+  //
+  // You have received a new project inquiry through your website.
+  //
+  // Customer Details:
+  // Name: {{from_name}}
+  // Email: {{from_email}}
+  // Company: {{company}}
+  //
+  // Project Details:
+  // {{message}}
+  //
+  // ---
+  // Reply directly to this email to respond to the customer.
+  // Customer email: {{reply_to}}
+  // Sent to: {{to_email}}
+  
+  // Default recipient (your email)
+  recipientEmail: 'sales@dhionix.com'
 }
 
 // Template example for EmailJS:

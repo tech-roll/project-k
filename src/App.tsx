@@ -5,8 +5,8 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket, Cloud, GitBranch, Database, Shield, GithubLogo, HardDrives, ArrowsCounterClockwise, Users, Lock } from "@phosphor-icons/react"
-import { useState } from "react"
+import { Code, Gear, ChartLine, Envelope, Phone, MapPin, ArrowRight, CheckCircle, Article, YoutubeLogo, LinkedinLogo, FacebookLogo, InstagramLogo, TwitterLogo, Moon, Sun, Terminal, CloudArrowUp, Rocket, Cloud, GitBranch, Database, Shield, GithubLogo, HardDrives, ArrowsCounterClockwise, Users, Lock, List, X } from "@phosphor-icons/react"
+import { useState, useEffect } from "react"
 import { toast } from "sonner"
 import emailjs from '@emailjs/browser'
 import { emailConfig } from "@/config/email"
@@ -27,6 +27,30 @@ function App() {
   const [showBlog, setShowBlog] = useState(false)
   const [showServices, setShowServices] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Close mobile menu on window resize and ESC key
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // md breakpoint
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    document.addEventListener('keydown', handleKeyDown)
+    
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMobileMenuOpen])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,20 +61,39 @@ function App() {
     
     try {
       // EmailJS configuration from config file
-      const { serviceId, templateId, publicKey } = emailConfig
+      const { serviceId, templateId, publicKey, recipientEmail } = emailConfig
+      
+      // Check if EmailJS is properly configured
+      if (publicKey === 'YOUR_EMAILJS_PUBLIC_KEY_HERE' || 
+          serviceId.includes('dhionix') || 
+          templateId.includes('dhionix')) {
+        throw new Error('EmailJS not configured. Please set up EmailJS credentials in /src/config/email.ts')
+      }
       
       // Prepare template parameters
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        company: formData.company,
+        company: formData.company || 'Not specified',
         message: formData.message,
-        to_email: 'sales@dhionix.com',
+        to_email: recipientEmail,
         reply_to: formData.email,
+        // Additional metadata
+        timestamp: new Date().toLocaleString(),
+        source: 'Dhionix Website Contact Form'
       }
       
+      console.log('Attempting to send email with EmailJS...', {
+        serviceId,
+        templateId,
+        recipientEmail,
+        customerEmail: formData.email
+      })
+      
       // Send email using EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      console.log('Email sent successfully:', response)
       
       // Success
       toast.dismiss(loadingToast)
@@ -58,17 +101,55 @@ function App() {
       setFormData({ name: '', email: '', company: '', message: '' })
       
     } catch (error) {
-      console.error('Failed to send email:', error)
+      console.error('Failed to send email via EmailJS:', error)
       toast.dismiss(loadingToast)
       
-      // Fallback: Open email client with pre-filled information
-      const emailSubject = `New Project Inquiry from ${formData.name}`
-      const emailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ACompany: ${formData.company}%0D%0A%0D%0AProject Details:%0D%0A${formData.message}`
-      const mailtoLink = `mailto:sales@dhionix.com?subject=${emailSubject}&body=${emailBody}`
-      
-      window.open(mailtoLink, '_blank')
-      toast.success("Opening your email client to send the message.")
-      setFormData({ name: '', email: '', company: '', message: '' })
+      // Enhanced fallback: Try multiple methods
+      try {
+        // Method 1: mailto link with better formatting
+        const emailSubject = encodeURIComponent(`New Project Inquiry from ${formData.name}`)
+        const emailBody = encodeURIComponent(
+          `Hello Dhionix Team,\n\n` +
+          `You have received a new project inquiry through your website.\n\n` +
+          `Customer Details:\n` +
+          `Name: ${formData.name}\n` +
+          `Email: ${formData.email}\n` +
+          `Company: ${formData.company || 'Not specified'}\n\n` +
+          `Project Details:\n${formData.message}\n\n` +
+          `---\n` +
+          `Sent from: Dhionix Website Contact Form\n` +
+          `Timestamp: ${new Date().toLocaleString()}\n` +
+          `Please reply directly to ${formData.email}`
+        )
+        
+        const mailtoLink = `mailto:sales@dhionix.com?subject=${emailSubject}&body=${emailBody}`
+        
+        // Try to open email client
+        const emailWindow = window.open(mailtoLink, '_blank')
+        
+        if (emailWindow) {
+          toast.success("Opening your email client to send the message. Please send the email to complete your inquiry.")
+        } else {
+          // If popup blocked, show manual email instructions
+          toast.error(
+            "Email setup needed. Please contact us directly at sales@dhionix.com",
+            { duration: 8000 }
+          )
+        }
+        
+        // Clear form anyway since user has the email content
+        setFormData({ name: '', email: '', company: '', message: '' })
+        
+      } catch (fallbackError) {
+        console.error('Fallback email method also failed:', fallbackError)
+        
+        // Final fallback: Show manual contact instructions
+        toast.error(
+          `Please email us directly at sales@dhionix.com with your inquiry. ` +
+          `We apologize for the technical issue.`,
+          { duration: 10000 }
+        )
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -161,16 +242,18 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-[100] bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border-b border-border/40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 flex items-center gap-3 whitespace-nowrap">
-              <img src={logo} alt="logo" className="h-10 w-10 flex-shrink-0" />
-              <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent flex-shrink-0">Dhionix</h1>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <button onClick={() => setShowServices(true)} className="text-foreground/80 hover:text-primary transition-all duration-300 hover:scale-105">Services</button>
-                <a href="#about" className="text-foreground/80 hover:text-primary transition-all duration-300 hover:scale-105">About</a>
-                <button onClick={() => setShowBlog(true)} className="text-foreground/80 hover:text-primary transition-all duration-300 hover:scale-105">Blog</button>
-                <a href="#contact-us" className="text-foreground/80 hover:text-primary transition-all duration-300 hover:scale-105">Contact Us</a>
+            <div className="flex items-center gap-6 lg:gap-8">
+              <div className="logo-text-container whitespace-nowrap">
+                <div className="logo-wrapper h-8 w-8 sm:h-10 sm:w-10">
+                  <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover" />
+                </div>
+                <h1 className="company-name text-lg sm:text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">Dhionix</h1>
+              </div>
+              <div className="hidden md:flex items-baseline space-x-6 lg:space-x-8">
+                <button onClick={() => setShowServices(true)} className="text-foreground/80 hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-md px-2 py-1 transition-all duration-300 hover:scale-105 font-medium">Services</button>
+                <a href="#about" className="text-foreground/80 hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-md px-2 py-1 transition-all duration-300 hover:scale-105 font-medium">About</a>
+                <button onClick={() => setShowBlog(true)} className="text-foreground/80 hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-md px-2 py-1 transition-all duration-300 hover:scale-105 font-medium">Blog</button>
+                <a href="#contact-us" className="text-foreground/80 hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-md px-2 py-1 transition-all duration-300 hover:scale-105 font-medium">Contact Us</a>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -187,12 +270,71 @@ function App() {
                   <Sun className="w-5 h-5" weight="duotone" />
                 )}
               </Button>
-              <Button asChild className="shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
+              <Button asChild className="hidden sm:flex shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
                 <a href="#contact-us">Get Started</a>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden rounded-full w-10 h-10 hover:bg-primary/10 transition-all duration-300"
+                aria-label="Toggle mobile menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-5 h-5" weight="bold" />
+                ) : (
+                  <List className="w-5 h-5" weight="bold" />
+                )}
               </Button>
             </div>
           </div>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl animate-in slide-in-from-top-2 duration-200">
+            <div className="px-4 py-4 space-y-3">
+              <button 
+                onClick={() => {
+                  setShowServices(true)
+                  setIsMobileMenuOpen(false)
+                }} 
+                className="block w-full text-left px-3 py-2 text-foreground/80 hover:text-primary hover:bg-primary/5 focus:text-primary focus:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg transition-all duration-300 font-medium"
+              >
+                Services
+              </button>
+              <a 
+                href="#about" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left px-3 py-2 text-foreground/80 hover:text-primary hover:bg-primary/5 focus:text-primary focus:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg transition-all duration-300 font-medium"
+              >
+                About
+              </a>
+              <button 
+                onClick={() => {
+                  setShowBlog(true)
+                  setIsMobileMenuOpen(false)
+                }} 
+                className="block w-full text-left px-3 py-2 text-foreground/80 hover:text-primary hover:bg-primary/5 focus:text-primary focus:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg transition-all duration-300 font-medium"
+              >
+                Blog
+              </button>
+              <a 
+                href="#contact-us" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left px-3 py-2 text-foreground/80 hover:text-primary hover:bg-primary/5 focus:text-primary focus:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg transition-all duration-300 font-medium"
+              >
+                Contact Us
+              </a>
+              <div className="pt-2 border-t border-border/20">
+                <Button asChild className="w-full shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
+                  <a href="#contact-us" onClick={() => setIsMobileMenuOpen(false)}>Get Started</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
       {/* Hero Section */}
       <section className="relative py-24 sm:py-32 overflow-hidden mt-16">
@@ -427,6 +569,38 @@ function App() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <Card className="backdrop-blur-sm bg-card/80 border-border/40 hover:border-accent/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent/10">
+              <CardHeader>
+                <CardTitle className="text-2xl">New Project Enquiries</CardTitle>
+                <CardDescription>Get in touch for your next project</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Envelope className="w-5 h-5 text-accent" weight="duotone" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                      <p className="text-muted-foreground">sales@dhionix.com</p>
+                    </div>
+                  </div>
+                  
+                  <Separator />
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Phone className="w-5 h-5 text-accent" weight="duotone" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Mobile</h3>
+                      <p className="text-muted-foreground">+91 9741366703</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
             <Card className="backdrop-blur-sm bg-card/80 border-border/40 hover:border-primary/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-primary/10">
               <CardHeader>
                 <CardTitle className="text-2xl">Dhionix IT Solutions</CardTitle>
@@ -462,38 +636,6 @@ function App() {
                 </div>
               </CardContent>
             </Card>
-            
-            <Card className="backdrop-blur-sm bg-card/80 border-border/40 hover:border-accent/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent/10">
-              <CardHeader>
-                <CardTitle className="text-2xl">New Project Enquiries</CardTitle>
-                <CardDescription>Get in touch for your next project</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <Envelope className="w-5 h-5 text-accent" weight="duotone" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground">sales@dhionix.com</p>
-                    </div>
-                  </div>
-                  
-                  <Separator />
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <Phone className="w-5 h-5 text-accent" weight="duotone" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Mobile</h3>
-                      <p className="text-muted-foreground">+91 9741366703</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           <div className="text-center mb-16">
@@ -510,6 +652,12 @@ function App() {
               <CardTitle>Tell Us About Your Project</CardTitle>
               <CardDescription>
                 Fill out the form below and we'll get back to you within 24 hours.
+                {emailConfig.publicKey === 'YOUR_EMAILJS_PUBLIC_KEY_HERE' && (
+                  <div className="mt-2 p-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-sm text-amber-800 dark:text-amber-200">
+                    ⚠️ <strong>Admin Notice:</strong> EmailJS not configured. Emails will use fallback method. 
+                    <a href="/EMAILJS_SETUP_GUIDE.md" className="underline ml-1">Setup Guide</a>
+                  </div>
+                )}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -624,9 +772,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4 whitespace-nowrap">
-                <img src={logo} alt="logo" className="h-8 w-8 flex-shrink-0" />
-                <h3 className="text-xl font-bold text-background flex-shrink-0">Dhionix IT Solutions</h3>
+              <div className="logo-text-container whitespace-nowrap mb-4" style={{ minHeight: '2rem' }}>
+                <div className="logo-wrapper h-8 w-8">
+                  <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover" />
+                </div>
+                <h3 className="company-name text-xl font-bold text-background">Dhionix IT Solutions</h3>
               </div>
               <p className="text-background/80 mb-4">
                 Building exceptional software solutions that drive business growth and innovation.
