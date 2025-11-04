@@ -15,9 +15,9 @@
 
 export const emailConfig = {
   // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS:
-  serviceId: 'service_dhionix_001', // Your EmailJS service ID from step 2
-  templateId: 'template_dhionix_contact', // Your EmailJS template ID from step 3
-  publicKey: 'YOUR_EMAILJS_PUBLIC_KEY_HERE', // Your EmailJS public key from step 4
+  serviceId: 'service_dcimtom', // Your EmailJS service ID from step 2
+  templateId: 'template_buhqexi', // Your EmailJS template ID from step 3
+  publicKey: 'X8Q-627ZWARg8YSw2', // Your EmailJS public key from step 4
   
   // EMAIL TEMPLATE FOR EMAILJS (Copy this to your EmailJS template):
   // Subject: New Project Inquiry from {{from_name}}
