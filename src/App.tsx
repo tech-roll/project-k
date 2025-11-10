@@ -279,12 +279,12 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-[100] bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border-b border-border/40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Left side - Logo and Organization Name only */}
-            <div className="logo-text-container whitespace-nowrap">
-              <div className="logo-wrapper h-10 w-10">
-                <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover" />
+            {/* Logo + Company Name */}
+            <div className="flex items-center gap-3 whitespace-nowrap">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center">
+                <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover shadow-lg" />
               </div>
-              <h1 className="company-name text-xl font-bold text-primary">Dhionix</h1>
+              <h1 className="text-lg sm:text-xl font-bold text-primary select-none">Dhionix</h1>
             </div>
             
             {/* Right side - All menu options */}
@@ -921,11 +921,11 @@ function App() {
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12">
             {/* Company Info - Spans 5 columns */}
             <div className="md:col-span-12 lg:col-span-5">
-              <div className="logo-text-container whitespace-nowrap mb-6" style={{ minHeight: '2rem' }}>
-                <div className="logo-wrapper h-10 w-10">
+              <div className="flex items-center gap-3 whitespace-nowrap mb-6" style={{ minHeight: '2rem' }}>
+                <div className="h-10 w-10 flex items-center justify-center">
                   <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover shadow-lg" />
                 </div>
-                <h3 className="company-name text-2xl font-bold text-background">Dhionix IT Solutions</h3>
+                <h3 className="text-2xl font-bold text-background select-none">Dhionix IT Solutions</h3>
               </div>
               <p className="text-background/80 mb-6 text-lg leading-relaxed max-w-md">
                 Building exceptional software solutions that drive business growth and innovation.
