@@ -27,19 +27,6 @@ export function ServicesView({ onBack }: ServicesViewProps) {
   const { theme, toggleTheme } = useTheme()
   const devopsServices = [
     {
-      icon: Terminal,
-      title: "Custom Software Development",
-      description: "End-to-end software development services tailored to your business needs.",
-      features: [
-        "Full-stack web applications",
-        "Mobile app development (iOS & Android)",
-        "Progressive Web Apps (PWA)",
-        "API design and development",
-        "Legacy system modernization",
-        "Microservices architecture"
-      ]
-    },
-    {
       icon: CloudArrowUp,
       title: "Cloud Infrastructure & Migration",
       description: "Build and migrate to scalable, resilient cloud infrastructure.",
@@ -181,18 +168,6 @@ export function ServicesView({ onBack }: ServicesViewProps) {
       useCases: ["Auto DevOps", "Pipeline as code", "Security testing"]
     },
     {
-      name: "CircleCI",
-      category: "CI/CD Automation",
-      description: "Cloud-native CI/CD platform for modern software teams",
-      useCases: ["Fast builds", "Parallel testing", "Docker layer caching"]
-    },
-    {
-      name: "Travis CI",
-      category: "CI/CD Automation",
-      description: "Continuous integration service for open source and private projects",
-      useCases: ["GitHub integration", "Multi-language support", "Build matrix"]
-    },
-    {
       name: "Azure Pipelines",
       category: "CI/CD Automation",
       description: "Cloud-based CI/CD service from Microsoft",
@@ -245,12 +220,6 @@ export function ServicesView({ onBack }: ServicesViewProps) {
       category: "Infrastructure as Code",
       description: "AWS-native infrastructure provisioning service",
       useCases: ["AWS resources", "Stack management", "Template-based deployment"]
-    },
-    {
-      name: "Pulumi",
-      category: "Infrastructure as Code",
-      description: "Modern infrastructure as code using familiar programming languages",
-      useCases: ["Multi-cloud deployment", "Programmatic infrastructure", "Cloud automation"]
     }
   ]
 
@@ -643,28 +612,23 @@ export function ServicesView({ onBack }: ServicesViewProps) {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-primary/5 via-background to-accent/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+      <section className="py-12 bg-gradient-to-br from-primary/5 via-background to-accent/10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
             Ready to Transform Your DevOps?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Let's discuss how we can help modernize your development and deployment processes
+          <p className="text-lg text-muted-foreground mb-6">
+            Let's discuss how we can help modernize your development processes
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" onClick={onBack}>
-              Get Started
-            </Button>
-            <Button size="lg" variant="outline" onClick={onBack}>
-              Contact Us
-            </Button>
-          </div>
+          <Button size="lg" onClick={onBack}>
+            Get Started
+          </Button>
         </div>
       </section>
 
-      <footer className="bg-foreground text-background py-8">
+      <footer className="bg-foreground text-background py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-background/80">© 2024 Dhionix IT Solutions. All rights reserved.</p>
+          <p className="text-background/80 text-sm">© 2024 Dhionix IT Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>

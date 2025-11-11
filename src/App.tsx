@@ -159,17 +159,6 @@ function App() {
 
   const services = [
     {
-      icon: Terminal,
-      title: "Custom Software Development",
-      shortDescription: "Build bespoke applications tailored to your unique business needs with cutting-edge technology.",
-      description: "Transform your vision into reality with custom-built software solutions designed specifically for your business challenges. Our expert developers leverage modern frameworks and best practices to create scalable, maintainable applications.",
-      features: ["Web Applications", "Mobile Apps (iOS/Android)", "Enterprise Solutions", "API Development", "Progressive Web Apps", "Cross-Platform Solutions"],
-      benefits: "Accelerated time-to-market with scalable, maintainable code architecture that grows with your business.",
-      scenarios: "E-commerce platforms, SaaS applications, mobile-first solutions, internal business tools",
-      techStack: ["React/Next.js", "Node.js", "Python/Django", "React Native", ".NET Core", "Microservices"],
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
       icon: Cloud,
       title: "GitHub Cloud Services",
       shortDescription: "Empower your development teams with GitHub's cloud-native collaboration platform.",
@@ -245,17 +234,6 @@ function App() {
       scenarios: "Legacy application modernization, data center consolidation, microservices transformation, hybrid cloud strategy",
       techStack: ["Kubernetes", "Docker", "Terraform", "AWS/Azure/GCP", "Service Mesh", "Cloud Native Tools"],
       color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Rocket,
-      title: "Digital Transformation",
-      shortDescription: "Drive business growth through strategic technology innovation and automation.",
-      description: "Strategic technology consulting to modernize your business processes, automate workflows, and leverage data analytics to drive growth and competitive advantage in the digital age.",
-      features: ["Process Automation", "Data Analytics & BI", "System Integration", "Technology Strategy", "AI/ML Implementation", "Change Management"],
-      benefits: "Streamlined operations with data-driven insights, automated workflows, reduced manual effort, and measurable ROI.",
-      scenarios: "Business process reengineering, digital-first initiatives, competitive advantage through technology, industry 4.0",
-      techStack: ["Power BI", "RPA Tools", "AI/ML Platforms", "Integration Platforms", "Analytics Tools", "Low-Code Platforms"],
-      color: "from-pink-500 to-rose-500"
     }
   ]
 
@@ -280,11 +258,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo + Company Name */}
-            <div className="flex items-center gap-3 whitespace-nowrap">
-              <div className="h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 flex items-center justify-center flex-shrink-0">
                 <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover shadow-lg" />
               </div>
-              <h1 className="text-lg sm:text-xl font-bold text-primary select-none">Dhionix</h1>
+              <h1 className="text-xl font-bold text-primary select-none leading-none">Dhionix</h1>
             </div>
             
             {/* Right side - All menu options */}
@@ -996,11 +974,11 @@ function App() {
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12">
             {/* Company Info - Spans 5 columns */}
             <div className="md:col-span-12 lg:col-span-5">
-              <div className="flex items-center gap-3 whitespace-nowrap mb-6" style={{ minHeight: '2rem' }}>
-                <div className="h-10 w-10 flex items-center justify-center">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-10 w-10 flex items-center justify-center flex-shrink-0">
                   <img src={logo} alt="Dhionix Logo" className="h-full w-full rounded-lg object-cover shadow-lg" />
                 </div>
-                <h3 className="text-2xl font-bold text-background select-none">Dhionix IT Solutions</h3>
+                <h3 className="text-2xl font-bold text-background select-none leading-none">Dhionix IT Solutions</h3>
               </div>
               <p className="text-background/80 mb-6 text-lg leading-relaxed max-w-md">
                 Building exceptional software solutions that drive business growth and innovation.
