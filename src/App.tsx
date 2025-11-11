@@ -645,49 +645,24 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
               <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute top-4 left-4">
                   <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
-                    Cloud Architecture
+                    GitHub Actions
                   </Badge>
                 </div>
               </div>
               <CardHeader>
                 <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-                  Building Scalable Microservices with Kubernetes
+                  Mastering CI/CD with GitHub Actions
                 </CardTitle>
                 <CardDescription className="text-base line-clamp-2">
-                  Learn how to design and deploy microservices architecture using Kubernetes for enterprise-scale applications.
+                  Learn how to automate your entire software development workflow with GitHub Actions, from build to deployment.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>Alex Thompson</span>
-                  <span>8 min read</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
-              <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-secondary/30 group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute top-4 left-4">
-                  <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
-                    AI & Machine Learning
-                  </Badge>
-                </div>
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-                  The Future of AI in Enterprise Software Development
-                </CardTitle>
-                <CardDescription className="text-base line-clamp-2">
-                  Exploring how artificial intelligence is transforming the software development lifecycle.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>Jordan Kim</span>
+                  <span>Dhionix Team</span>
                   <span>10 min read</span>
                 </div>
               </CardContent>
@@ -695,25 +670,125 @@ function App() {
 
             <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
               <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-primary/30 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/30 to-orange-500/30 group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute top-4 left-4">
                   <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
-                    Security
+                    GitHub Advanced Security
                   </Badge>
                 </div>
               </div>
               <CardHeader>
                 <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-                  Security Best Practices for Modern Web Applications
+                  Securing Your Code with GitHub Advanced Security
                 </CardTitle>
                 <CardDescription className="text-base line-clamp-2">
-                  A comprehensive guide to securing your web applications against common vulnerabilities.
+                  Protect your codebase with automated vulnerability scanning, secret detection, and code analysis using GHAS.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>Sam Rivera</span>
+                  <span>Dhionix Team</span>
                   <span>12 min read</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
+              <div className="relative h-48 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/30 to-teal-500/30 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-4 left-4">
+                  <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
+                    GitHub Copilot
+                  </Badge>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                  Boost Productivity with GitHub Copilot
+                </CardTitle>
+                <CardDescription className="text-base line-clamp-2">
+                  Discover how AI-powered code suggestions can accelerate development and improve code quality in your projects.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>Dhionix Team</span>
+                  <span>8 min read</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
+              <div className="relative h-48 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-blue-500/30 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-4 left-4">
+                  <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
+                    GitHub Pages
+                  </Badge>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                  Deploy Static Sites with GitHub Pages
+                </CardTitle>
+                <CardDescription className="text-base line-clamp-2">
+                  Host your documentation, portfolio, or project site for free with GitHub Pages and custom domain support.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>Dhionix Team</span>
+                  <span>7 min read</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
+              <div className="relative h-48 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-pink-500/30 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-4 left-4">
+                  <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
+                    DevSecOps
+                  </Badge>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                  Implementing DevSecOps Best Practices
+                </CardTitle>
+                <CardDescription className="text-base line-clamp-2">
+                  Integrate security into every phase of your DevOps pipeline for faster, more secure software delivery.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>Dhionix Team</span>
+                  <span>15 min read</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group border-border/40 backdrop-blur-sm bg-card/80">
+              <div className="relative h-48 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 to-blue-500/30 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-4 left-4">
+                  <Badge variant="secondary" className="bg-background/90 backdrop-blur shadow-lg">
+                    GitHub Enterprise
+                  </Badge>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                  GitHub Enterprise: Cloud vs Server
+                </CardTitle>
+                <CardDescription className="text-base line-clamp-2">
+                  Compare GitHub Enterprise Cloud and Server to choose the right solution for your organization's needs.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>Dhionix Team</span>
+                  <span>11 min read</span>
                 </div>
               </CardContent>
             </Card>
